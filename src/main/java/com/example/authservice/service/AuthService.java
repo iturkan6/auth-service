@@ -34,7 +34,7 @@ public class AuthService {
                 .build();
         userRepo.save(user);
         String token = jwtService.generateToken(user);
-        kafkaTemplate.send("user_token", token);
+//        kafkaTemplate.send("user_token", token);
         return new AuthResponse(token);
     }
 
@@ -46,7 +46,7 @@ public class AuthService {
                 ));
         var user = userRepo.findByEmail(request.email()).orElseThrow();
         String token = jwtService.generateToken(user);
-        kafkaTemplate.send("user_token", token);
+//        kafkaTemplate.send("user_token", token);
         return new AuthResponse(token);
     }
 
