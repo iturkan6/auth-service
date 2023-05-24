@@ -7,7 +7,6 @@ import com.example.authservice.entity.Role;
 import com.example.authservice.model.User;
 import com.example.authservice.repository.UserRepo;
 import lombok.RequiredArgsConstructor;
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
