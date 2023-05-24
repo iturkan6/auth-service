@@ -22,7 +22,6 @@ public class AuthService {
     private final PasswordEncoder encoder;
     private final JwtService jwtService;
     private final AuthenticationManager manager;
-    private final KafkaTemplate<String, String> kafkaTemplate;
 
     public AuthResponse register(RegisterUser request) {
         User user = User.builder()
@@ -34,7 +33,6 @@ public class AuthService {
                 .build();
         userRepo.save(user);
         String token = jwtService.generateToken(user);
-//        kafkaTemplate.send("user_token", token);
         return new AuthResponse(token);
     }
 
@@ -46,7 +44,6 @@ public class AuthService {
                 ));
         var user = userRepo.findByEmail(request.email()).orElseThrow();
         String token = jwtService.generateToken(user);
-//        kafkaTemplate.send("user_token", token);
         return new AuthResponse(token);
     }
 
